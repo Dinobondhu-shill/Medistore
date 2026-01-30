@@ -1,19 +1,48 @@
-import { Navbar } from "@/components/navbar";
+import React from "react"
+import type { Metadata } from 'next'
+import { Geist, Geist_Mono } from 'next/font/google'
+import { Navbar } from '@/components/navbar'
+import '../../app/globals.css'
+import { Footer } from "@/components/footer"
 
-export default function commonLayout({
+const _geist = Geist({ subsets: ["latin"] });
+const _geistMono = Geist_Mono({ subsets: ["latin"] });
+
+export const metadata: Metadata = {
+  title: 'MediStore - Your Trusted Medical Pharmacy',
+  description: 'Shop quality medicines, health products, and wellness solutions at MediStore. Fast delivery, professional service.',
+  generator: 'v0.app',
+  icons: {
+    icon: [
+      {
+        url: '/icon-light-32x32.png',
+        media: '(prefers-color-scheme: light)',
+      },
+      {
+        url: '/icon-dark-32x32.png',
+        media: '(prefers-color-scheme: dark)',
+      },
+      {
+        url: '/icon.svg',
+        type: 'image/svg+xml',
+      },
+    ],
+    apple: '/apple-icon.png',
+  },
+}
+
+export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
-    
-   <main>
-    <nav>
-      <Navbar />
-    </nav>
-    <section>
-    {children}
-    </section>
-    </main>
-  );
+    <html lang="en">
+      <body className={`font-sans antialiased`}>
+        <Navbar />
+        {children}
+        <Footer />
+      </body>
+    </html>
+  )
 }

@@ -8,9 +8,10 @@ import { Button } from '@/components/ui/button';
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [cartCount] = useState(3);
+  const user = true
 
   const navLinks = [
-    { href: '#', label: 'Home' },
+    { href: '/', label: 'Home' },
     { href: '#', label: 'Products' },
     { href: '#', label: 'Categories' },
     { href: '#', label: 'About Us' },
@@ -79,13 +80,27 @@ export function Navbar() {
               )}
             </button>
 
-            {/* User Account */}
-            <button
-              className="p-2 text-foreground hover:text-primary hover:bg-muted rounded-lg transition-all duration-200"
-              aria-label="User account"
-            >
-              <User className="w-5 h-5" />
-            </button>
+         {/* User Account */}
+              {user ? (
+                <button
+                  className="p-2 text-foreground hover:text-primary hover:bg-muted rounded-lg transition-all duration-200"
+                  aria-label="User account"
+                >
+                  <User className="w-5 h-5" />
+                </button>) : (
+               <div className="flex items-center gap-4">
+                 <Button variant="outline" className="bg-primary hover:bg-secondary text-primary-foreground font-semibold">
+                 <Link href="/login">Log In</Link>
+                </Button>
+                <Button variant="outline" className="bg-primary hover:bg-secondary text-primary-foreground font-semibold">
+                  <Link href="/register">Register</Link>
+                </Button>
+               </div>
+              
+              )
+           
+            }
+
 
             {/* Mobile Menu Button */}
             <button
@@ -142,7 +157,7 @@ export function Navbar() {
         )}
       </div>
 
-     
+
     </nav>
   );
 }
