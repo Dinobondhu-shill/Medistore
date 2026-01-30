@@ -1,4 +1,5 @@
-import { CategoriesCarousel } from '@/components/category-carousal';
+import { CategoriesCarousel } from '@/components/HomeComponent/category-carousal';
+import { HotSellingMedicines } from '@/components/HomeComponent/hot-selling';
 import { SectionHeader } from '@/components/section-header';
 import { Button } from '@/components/ui/button';
 import { ShoppingBag } from 'lucide-react';
@@ -6,6 +7,7 @@ import { ShoppingBag } from 'lucide-react';
 export default function Home() {
   return (
     <main className="min-h-screen bg-linear-to-b from-background to-muted">
+
            {/* Categories Carousel Section */}
       <section className="py-5 md:py-10 border-t border-border bg-muted/30">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -16,6 +18,20 @@ export default function Home() {
           />
           <div className="pb-24">
             <CategoriesCarousel />
+          </div>
+        </div>
+      </section>
+
+        {/* Hot Selling Medicines Section */}
+      <section className="py-20 md:py-28 border-t border-border">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionHeader
+            subtitle="BESTSELLERS"
+            title="Hot Selling Medicines"
+            description="Discover our most popular and trusted medicines. These are customer favorites for effective relief and wellness."
+          />
+          <div className="mt-12">
+            <HotSellingMedicines />
           </div>
         </div>
       </section>
