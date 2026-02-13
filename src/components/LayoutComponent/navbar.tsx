@@ -4,12 +4,9 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Menu, X, Search, ShoppingCart, User, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { SessionData } from '@/types/types';
 
-interface SessionData {
-  user?: {
-    [key: string]: unknown;
-  };
-}
+
 
 export function Navbar({ sessionData }: { sessionData: SessionData }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -92,7 +89,11 @@ export function Navbar({ sessionData }: { sessionData: SessionData }) {
                   className="p-2 text-foreground hover:text-primary hover:bg-muted rounded-lg transition-all duration-200"
                   aria-label="User account"
                 >
+                 <Link 
+                 href="/profile"
+                 >
                   <User className="w-5 h-5" />
+                 </Link>
                 </button>) : (
                <div className="flex items-center gap-4">
                  <Button variant="outline" className="bg-primary hover:bg-secondary text-primary-foreground font-semibold">
