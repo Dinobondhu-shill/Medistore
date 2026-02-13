@@ -1,12 +1,10 @@
 import React from "react"
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
-import { Navbar } from '@/components/navbar'
+import { Navbar } from '@/components/LayoutComponent/navbar'
 import '../../app/globals.css'
-import { Footer } from "@/components/footer"
+import { Footer } from "@/components/LayoutComponent/footer"
+import { userServices } from "@/services/user-services"
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: 'MediStore - Your Trusted Medical Pharmacy',
@@ -31,15 +29,17 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+
+  const data = await userServices.getSession()
   return (
     <html lang="en">
       <body className={`font-sans antialiased`}>
-        <Navbar />
+        <Navbar sessionData={data} />
         {children}
         <Footer />
       </body>

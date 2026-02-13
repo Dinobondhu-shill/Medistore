@@ -5,15 +5,21 @@ import Link from 'next/link';
 import { Menu, X, Search, ShoppingCart, User, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-export function Navbar() {
+interface SessionData {
+  user?: {
+    [key: string]: unknown;
+  };
+}
+
+export function Navbar({ sessionData }: { sessionData: SessionData }) {
   const [isOpen, setIsOpen] = useState(false);
   const [cartCount] = useState(3);
-  const user = true
+  const user = sessionData?.user ? true : false;
 
   const navLinks = [
     { href: '/', label: 'Home' },
     { href: '/products', label: 'Products' },
-    { href: '#', label: 'Categories' },
+    { href: '/categories', label: 'Categories' },
     { href: '#', label: 'About Us' },
     { href: '#', label: 'Contact' },
   ];
@@ -68,7 +74,7 @@ export function Navbar() {
             </button>
 
             {/* Shopping Cart */}
-            <button
+          {user &&  <button
               className="relative p-2 text-foreground hover:text-primary hover:bg-muted rounded-lg transition-all duration-200"
               aria-label="Shopping cart"
             >
@@ -79,7 +85,7 @@ export function Navbar() {
                 </span>
               )}
             </button>
-
+}
          {/* User Account */}
               {user ? (
                 <button
