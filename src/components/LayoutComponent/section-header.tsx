@@ -14,7 +14,7 @@ export function SectionHeader({
   showDivider = true,
 }: SectionHeaderProps) {
   return (
-    <div className="space-y-4 mb-12">
+    <div className="space-y-4 mb-8">
       {subtitle && (
         <div className="flex items-center gap-2">
           <div className="h-1 w-8 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
@@ -25,7 +25,7 @@ export function SectionHeader({
       )}
 
       <div className="space-y-2">
-        <h2 className="text-4xl md:text-5xl font-bold text-foreground text-balance leading-tight">
+        <h2 className="text-2xl md:text-5xl font-bold text-foreground text-balance leading-tight">
           {title}
         </h2>
         {description && (

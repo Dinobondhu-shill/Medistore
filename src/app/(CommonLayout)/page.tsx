@@ -2,9 +2,24 @@ import { CategoriesCarousel } from '@/components/HomeComponent/category-carousal
 import { HotSellingMedicines } from '@/components/HomeComponent/hot-selling';
 import { SectionHeader } from '@/components/LayoutComponent/section-header';
 import { Button } from '@/components/ui/button';
+import { userServices } from '@/services/user-services';
 import { ShoppingBag } from 'lucide-react';
+import { redirect } from 'next/navigation';
+import { Roles } from '../constant/roles';
 
 export default async function Home() {
+
+const data = await userServices.getSession()
+
+
+  console.log("User session data:", data);
+ 
+  if(data.user.role === Roles.SELLER) {
+    redirect("/seller")
+  }
+  if(data.user.role === Roles.ADMIN) {
+    redirect("/admin")
+  }
 
   
   return (

@@ -26,7 +26,7 @@ export async function proxy(request: NextRequest) {
         return NextResponse.redirect(new URL('/', request.url));
     }
     if(pathname.startsWith('/seller') && userRole !== Roles.SELLER) {
-        return NextResponse.redirect(new URL('/', request.url));
+        return NextResponse.redirect(new URL('/redirect/access-denied', request.url));
     }
     if(pathname.startsWith('/profile') && userRole !== Roles.USER) {
         return NextResponse.redirect(new URL('/', request.url));
@@ -40,6 +40,9 @@ export async function proxy(request: NextRequest) {
     if(pathname.startsWith('/seller') && userRole === Roles.SELLER) {
         return NextResponse.next();
     }
+    // if(isAuthenticated && (pathname.startsWith('/login') || pathname.startsWith('/register'))) {
+    //     return NextResponse.redirect(new URL('/', request.url));
+    // }
 
 
   return NextResponse.next();
