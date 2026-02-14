@@ -42,7 +42,7 @@ export default function SellerLayout({ children }: { children: React.ReactNode }
   const navItems = [
     { label: "Dashboard", icon: LayoutDashboard, href: "/seller" },
     { label: "Products", icon: Package, href: "/seller/products" },
-    { label: "Add Product", icon: PlusCircle, href: "/seller/products/add" },
+    { label: "Add Product", icon: PlusCircle, href: "/seller/add-product" },
     { label: "Orders", icon: ShoppingCart, href: "/seller/orders" },
     { label: "Analytics", icon: BarChart3, href: "/seller/analytics" },
     { label: "Settings", icon: Settings, href: "/seller/settings" },
